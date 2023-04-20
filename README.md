@@ -3,9 +3,7 @@
   <a href="https://github.com/othneildrew/Best-README-Template">
     <img src="images/logo.png" alt="Logo" width="200" height="auto">
   </a>
-
   <h3 align="center">Sakila Rest Api</h3>
-
   <p align="center">
     An awesome api Service Support different functions to use
     <br />
@@ -72,15 +70,25 @@ This is an example using our repository so follow those steps:
  👋👋 Congratulations you can interact with our api resources.
  
  # Supported resources
-   - films
-   - actors
-   - languages
-   - 
-
+ 
+   We support eleven Resources each one has its requests and responses, so to if you need 
+   to know more about those resources [Api Documentation](https://web.postman.co/documentation/14572081-20c650b2-628c-4480-8f2d-f6198b29025b/publish?workspaceId=a46008db-a28f-4544-8783-508d3280939a#url)
+  - Films 
+  - Actors
+  - Countries 
+  - Cities
+  - Categories
+  - Customers
+  - Languages
+  - Categories
+  - Payments
+  - Rentals
+  - Staffs
+ 
 # Technology Used
-
-- Java
-- Maven
+![java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/cz.jirutka.rsql/rsql-parser/badge.svg)](https://maven-badges.herokuapp.com/maven-central/cz.jirutka.rsql/rsql-parser)
+![MySql](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
 - Jakarta
 - Hibernate
 - JAXB 
