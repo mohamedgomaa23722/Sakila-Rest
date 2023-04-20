@@ -1,0 +1,5 @@
+.vscode
+.idea
+src/main/resources/META-INF/persistence.xml
+src/main/resources/hibernate.properties
+src/test

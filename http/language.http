@@ -1,0 +1,49 @@
+POST http://localhost:8080/sakila/languages HTTP/1.1
+Content-Type: text/xml
+
+<soap:Envelope  xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+xmlns:com="http://webservice.soap.api.sakila.iti.com/">
+   <soap:Body>
+      <com:getLanguages>
+         <page>1</page>
+      </com:getLanguages>
+   </soap:Body>
+</soap:Envelope>
+
+# POST http://localhost:8080/sakila/languages HTTP/1.1
+# Content-Type: text/xml
+
+# <soap:Envelope  xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+# xmlns:com="http://webservice.soap.api.sakila.iti.com/">
+#    <soap:Body>
+#       <com:getLanguage>
+#          <id>1</id>
+#       </com:getLanguage>
+#    </soap:Body>
+# </soap:Envelope>
+
+# POST http://localhost:8080/sakila/languages HTTP/1.1
+# Content-Type: text/xml
+
+# <soap:Envelope  xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+# xmlns:com="http://webservice.soap.api.sakila.iti.com/">
+#    <soap:Body>
+#       <com:insertLanguage>
+#          <language>
+#             <name>Arabic</name>
+#          </language>
+#       </com:insertLanguage>
+#    </soap:Body>
+# </soap:Envelope>
+
+POST http://localhost:8080/sakila/languages HTTP/1.1
+Content-Type: text/xml
+
+<soap:Envelope  xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+xmlns:com="http://webservice.soap.api.sakila.iti.com/">
+   <soap:Body>
+      <com:deleteLanguage>
+            <languageId>12</languageId>
+      </com:deleteLanguage>
+   </soap:Body>
+</soap:Envelope>

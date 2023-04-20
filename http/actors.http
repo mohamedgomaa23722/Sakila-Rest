@@ -1,0 +1,56 @@
+
+POST http://localhost:8080/sakila/actors HTTP/1.1
+Content-Type: text/xml
+
+<soap:Envelope  xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+xmlns:com="http://webservice.soap.api.sakila.iti.com/">
+   <soap:Body>
+      <com:actorsData>
+         <page>1</page>
+      </com:actorsData>
+   </soap:Body>
+</soap:Envelope>
+
+###
+POST http://localhost:8080/sakila/actors HTTP/1.1
+Content-Type: text/xml
+
+<soap:Envelope  xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+xmlns:com="http://webservice.soap.api.sakila.iti.com/">
+   <soap:Body>
+      <com:getActor>
+         <id>2</id>
+      </com:getActor>
+   </soap:Body>
+</soap:Envelope>
+
+###
+POST http://localhost:8080/sakila/actors HTTP/1.1
+Content-Type: text/xml
+
+<soap:Envelope  xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+xmlns:com="http://webservice.soap.api.sakila.iti.com/">
+   <soap:Body>
+      <com:insertActor>
+         <actorReq>
+            <firstName>Mohamed</firstName>
+            <lastName>Gomaa</lastName>
+         </actorReq>
+      </com:insertActor>
+   </soap:Body>
+</soap:Envelope>
+
+###
+POST http://localhost:8080/sakila/actors HTTP/1.1
+Content-Type: text/xml
+
+<soap:Envelope  xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+xmlns:com="http://webservice.soap.api.sakila.iti.com/">
+   <soap:Body>
+      <com:deleteActor>
+         <id>
+            214
+         </id>
+      </com:deleteActor>
+   </soap:Body>
+</soap:Envelope>

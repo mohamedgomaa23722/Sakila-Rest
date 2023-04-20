@@ -1,0 +1,41 @@
+POST http://localhost:8080/sakila/staffs HTTP/1.1
+Content-Type: text/xml
+
+<soap:Envelope  xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+xmlns:com="http://webservice.soap.api.sakila.iti.com/">
+   <soap:Body>
+      <com:getStaffs>
+         <page>
+            1
+         </page>
+      </com:getStaffs>
+   </soap:Body>
+</soap:Envelope>
+###
+POST http://localhost:8080/sakila/staffs HTTP/1.1
+Content-Type: text/xml
+
+<soap:Envelope  xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+xmlns:com="http://webservice.soap.api.sakila.iti.com/">
+   <soap:Body>
+      <com:staffById>
+         <id>
+            1
+         </id>
+      </com:staffById>
+   </soap:Body>
+</soap:Envelope>
+
+###
+POST http://localhost:8080/sakila/staffs HTTP/1.1
+Content-Type: text/xml
+
+<soap:Envelope  xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+xmlns:com="http://webservice.soap.api.sakila.iti.com/">
+   <soap:Body>
+      <com:staffByname>
+         <staffName>Mike</staffName>
+         <page> 1</page>
+      </com:staffByname>
+   </soap:Body>
+</soap:Envelope>

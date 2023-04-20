@@ -1,0 +1,116 @@
+### get all
+POST http://localhost:8080/sakila/films HTTP/1.1
+Content-Type: text/xml
+
+<soap:Envelope  xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+xmlns:com="http://webservice.soap.api.sakila.iti.com/">
+   <soap:Body>
+      <com:getFilms>
+         <page>
+            1
+         </page>
+      </com:getFilms>
+   </soap:Body>
+</soap:Envelope>
+
+###insertFilm
+POST http://localhost:8080/sakila/films HTTP/1.1
+Content-Type: text/xml
+
+<soap:Envelope  xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+xmlns:com="http://webservice.soap.api.sakila.iti.com/">
+   <soap:Body>
+      <com:insertFilm>
+      <film>
+         <languageName>Arabic</languageName>
+         <title>GGGGakj</title>
+         <description>THis is </description>
+         <releaseYear>2010</releaseYear>
+         <rentalDuration>6</rentalDuration>
+         <rentalRate>4.0</rentalRate>
+         <length>55</length>
+         <replacementCost>55.5</replacementCost>
+         <rating>G</rating>
+         <specialFeatures>Trailers,Deleted Scenes</specialFeatures>
+         <actors>
+            <actorActorId>5</actorActorId>
+         </actors>
+
+        <categories>
+          <categoryId>6</categoryId>
+          <name>Documentary</name>
+        </categories>
+        </film>
+      </com:insertFilm>
+   </soap:Body>
+</soap:Envelope>
+
+### findFilmById
+POST http://localhost:8080/sakila/films HTTP/1.1
+Content-Type: text/xml
+
+<soap:Envelope  xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+xmlns:com="http://webservice.soap.api.sakila.iti.com/">
+   <soap:Body>
+      <com:findFilmById>
+         <id>1026</id>
+      </com:findFilmById>
+   </soap:Body>
+</soap:Envelope>
+
+### updateFilm
+POST http://localhost:8080/sakila/films HTTP/1.1
+Content-Type: text/xml
+
+<soap:Envelope  xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+xmlns:com="http://webservice.soap.api.sakila.iti.com/">
+   <soap:Body>
+      <com:updateFilm>
+        <film>
+         <filmId>1002</filmId>
+         <languageName>English</languageName>
+         <title>fffff</title>
+         <description>aaaaaa</description>
+         <releaseYear>2010</releaseYear>
+         <rentalDuration>6</rentalDuration>
+         <rentalRate>4.0</rentalRate>
+         <length>55</length>
+         <replacementCost>55.5</replacementCost>
+         <rating>G</rating>
+         <specialFeatures>Trailers,Deleted Scenes</specialFeatures>
+        </film>
+      </com:updateFilm>
+   </soap:Body>
+</soap:Envelope>
+
+### deleteFilm
+POST http://localhost:8080/sakila/films HTTP/1.1
+Content-Type: text/xml
+
+<soap:Envelope  xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+xmlns:com="http://webservice.soap.api.sakila.iti.com/">
+   <soap:Body>
+      <com:deleteFilm>
+         <id>1003</id>
+      </com:deleteFilm>
+   </soap:Body>
+</soap:Envelope>
+
+### filterFilm
+POST http://localhost:8080/sakila/films HTTP/1.1
+Content-Type: text/xml
+
+<soap:Envelope  xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+xmlns:com="http://webservice.soap.api.sakila.iti.com/">
+   <soap:Body>
+      <com:filterFilms>
+         <filterRecord>
+            <page>1</page>
+            <categoryId>0</categoryId>
+            <price>20</price>
+            <rate>4.0</rate>
+            <name>GGGGakj</name>
+         </filterRecord>
+      </com:filterFilms>
+   </soap:Body>
+</soap:Envelope>

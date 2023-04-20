@@ -1,0 +1,37 @@
+
+POST http://localhost:8080/sakila/customers HTTP/1.1
+Content-Type: text/xml
+
+<soap:Envelope  xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+xmlns:com="http://webservice.soap.api.sakila.iti.com/">
+   <soap:Body>
+      <com:getCustomers>
+         <page>1</page>
+      </com:getCustomers>
+   </soap:Body>
+</soap:Envelope>
+
+###
+POST http://localhost:8080/sakila/customers HTTP/1.1
+Content-Type: text/xml
+
+<soap:Envelope  xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+xmlns:com="http://webservice.soap.api.sakila.iti.com/">
+   <soap:Body>
+      <com:insertCustomer>
+         <customer>
+            <firstName>Mohamed</firstName>
+            <lastName>gomaa</lastName>
+            <email>mohamedgo@gmail.com</email>
+            <address>6 sharaw street</address>
+            <district>Helwan</district>
+            <postalCode>1111</postalCode>
+            <phone>01068053092</phone>
+            <city>cairo</city>
+            <country>Egypt</country>
+         </customer>
+      </com:insertCustomer>
+   </soap:Body>
+</soap:Envelope>
+
+
