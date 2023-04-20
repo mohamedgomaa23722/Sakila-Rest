@@ -15,16 +15,24 @@
   </p>
 </div>
 
-# Api Document 
-our api contains 11 end points with simple crud operations and complex bussiness functionality to support 
-different cases of search with the best way and easy for developer to use.
-[Documentation][1]
+# About The Project
+This Project is simple movie store provider and we built a differnet services for developer, Project try to rent movies to our customers and 
+our main bussiness is rent those films so we provide rest and soap services to handle all simple crud operations from adding movie to rent it by
+customer.
 
-# Setup Project
-- Clone this Repository to your local machine 
-- Download MySQL WorkBench which has sakila schema by default
-- Upate persistance.xml with your username and password which take privilages to sakila schema
+# Get Started
+This is an example using our repository so follow those steps:
 
+- Clone Repository
+
+  ```sh
+    git clone https://github.com/mohamedgomaa23722/Sakila-Rest.git
+  ``` 
+
+- Modifing Persistance.xml properities
+  ```sh
+    git clone https://github.com/mohamedgomaa23722/Sakila-Rest.git
+  ``` 
 
 
 # Technology Used
