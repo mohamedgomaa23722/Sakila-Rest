@@ -7,7 +7,7 @@
   <p align="center">
     An awesome api Service Support different functions to use
     <br />
-    <a href="https://web.postman.co/documentation/14572081-20c650b2-628c-4480-8f2d-f6198b29025b/publish?workspaceId=a46008db-a28f-4544-8783-508d3280939a#url"><strong>Explore Api documentation »</strong></a>
+    <a href="https://documenter.getpostman.com/view/14572081/2s93Y2T2vK"><strong>Explore Api documentation »</strong></a>
     <br />
     <br />
   </p>
@@ -72,7 +72,7 @@ This is an example using our repository so follow those steps:
  # Supported resources
  
    We support eleven Resources each one has its requests and responses, so to if you need 
-   to know more about those resources [Api Documentation](https://web.postman.co/documentation/14572081-20c650b2-628c-4480-8f2d-f6198b29025b/publish?workspaceId=a46008db-a28f-4544-8783-508d3280939a#url)
+   to know more about those resources [Api Documentation](https://documenter.getpostman.com/view/14572081/2s93Y2T2vK)
   - Films 
   - Actors
   - Countries 
