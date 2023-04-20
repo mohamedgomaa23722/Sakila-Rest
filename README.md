@@ -1,14 +1,31 @@
-# Sakila_Api
-Sakila Project is Small video store has a bunch of films and customer and we need to provide services for that small bussiness by using tools below
+<br />
+<div align="center">
+  <a href="https://github.com/othneildrew/Best-README-Template">
+    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  </a>
+
+  <h3 align="center">Sakila Rest Api</h3>
+
+  <p align="center">
+    An awesome api Service Support different functions to use
+    <br />
+    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore Api documentation »</strong></a>
+    <br />
+    <br />
+  </p>
+</div>
+
+# Api Document 
+our api contains 11 end points with simple crud operations and complex bussiness functionality to support 
+different cases of search with the best way and easy for developer to use.
+[Documentation][1]
 
 # Setup Project
 - Clone this Repository to your local machine 
 - Download MySQL WorkBench which has sakila schema by default
 - Upate persistance.xml with your username and password which take privilages to sakila schema
 
-# our End Points (TODO : Api Documnetation Coming soon)
-- /Customers
-- /films
+
 
 # Technology Used
 - Java
@@ -17,4 +34,5 @@ Sakila Project is Small video store has a bunch of films and customer and we nee
 - Hibernate
 - JAXB 
 - MySQL
-- Soap And Rest
+- Rest
+-jersey
