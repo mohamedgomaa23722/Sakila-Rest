@@ -5,5 +5,6 @@ com\iti\sakila\service\ActorServiceTest.class
 com\iti\sakila\service\CustomerServiceTest.class
 com\iti\sakila\respository\BaseRepositoryTest.class
 com\iti\sakila\respository\ActorRepoTest.class
+com\iti\sakila\service\AddressServiceTest.class
 com\iti\sakila\service\BaseServiceTest.class
 com\iti\sakila\service\MapperTest.class

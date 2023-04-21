@@ -10,6 +10,7 @@ import org.mapstruct.factory.Mappers;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Mapper(componentModel = "default", uses = {AddressMapper.class, RentalMapper.class})
@@ -62,10 +63,13 @@ public interface CustomerMapper extends BaseMapper<Customer, CustomerDto> {
 
     @Named("paymentAmount")
     default String convertToString(Set<PaymentDto> payments) {
-        return payments.stream()
+        Optional<BigDecimal> amount = payments.stream()
                 .map(PaymentDto::getAmount)
-                .reduce(BigDecimal::add)
-                .get().toString();
+                .reduce(BigDecimal::add);
+        if (amount.isPresent())
+            return amount.get().toString();
+        else
+            return "0";
     }
 
     @Named("rentalAmount")

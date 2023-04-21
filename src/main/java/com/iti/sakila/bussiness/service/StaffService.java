@@ -18,6 +18,32 @@ public class StaffService extends BaseService<Staff, StaffDto> {
         super(Staff.class, StaffMapper.INSTANCE);
     }
 
+    /**
+     * To update  Person We need to take follows in consideration :
+     * 1- update staff city
+     * 2- update staff country
+     * 3- update staff address this includes city and country
+     * 4- update staff name and other main poperty for staff
+     * @param dto
+     * @param id
+     * @return
+     */
+//    @Override
+//    public Message update(StaffDto dto, int id) {
+//        Database.doInTransaction(entityManager -> {
+//            //Find staff before update
+//            Staff staff = super.repository.findById(id, entityManager);
+//
+//            //Check address
+//            if (dto.getCity() != null && !dto.getCity().equals(staff.getAddress().getCity().getCity())){
+//
+//            }
+//
+//        });
+//
+//        return super.update(dto, id);
+//    }
+
     @Override
     public Message insert(StaffDto customerDto) {
         Staff customer = super.baseMapper.toEntity(customerDto);

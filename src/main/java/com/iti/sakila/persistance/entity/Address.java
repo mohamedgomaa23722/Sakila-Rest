@@ -4,13 +4,13 @@ package com.iti.sakila.persistance.entity;
 
 import jakarta.persistence.*;
 
-import org.hibernate.annotations.Type;
-
+import org.locationtech.jts.geom.Coordinate;
+import org.locationtech.jts.geom.GeometryFactory;
+import org.locationtech.jts.geom.Point;
 
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
-import java.awt.*;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.HashSet;
@@ -31,8 +31,7 @@ public class Address implements java.io.Serializable {
     private String district;
     private String postalCode;
     private String phone;
-    private String location = "";
-
+    private Point location = new GeometryFactory().createPoint(new Coordinate(55,55));
     private Timestamp lastUpdate = new Timestamp(new Date().getTime());
     private Set<Staff> staffs = new HashSet<Staff>(0);
     private Set<Customer> customers = new HashSet<Customer>(0);
@@ -42,7 +41,7 @@ public class Address implements java.io.Serializable {
     }
 
 
-    public Address(City city, String address, String district, String phone, String location, Timestamp lastUpdate) {
+    public Address(City city, String address, String district, String phone, Point location, Timestamp lastUpdate) {
         this.city = city;
         this.address = address;
         this.district = district;
@@ -51,7 +50,7 @@ public class Address implements java.io.Serializable {
         this.lastUpdate = lastUpdate;
     }
 
-    public Address(City city, String address, String address2, String district, String postalCode, String phone, String location, Timestamp lastUpdate, Set<Staff> staffs, Set<Customer> customers, Set<Store> stores) {
+    public Address(City city, String address, String address2, String district, String postalCode, String phone, Point location, Timestamp lastUpdate, Set<Staff> staffs, Set<Customer> customers, Set<Store> stores) {
         this.city = city;
         this.address = address;
         this.address2 = address2;
@@ -76,7 +75,7 @@ public class Address implements java.io.Serializable {
         this.addressId = addressId;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "city_id", nullable = false)
     public City getCity() {
         return this.city;
@@ -136,18 +135,14 @@ public class Address implements java.io.Serializable {
         this.phone = phone;
     }
 
-//    TODO [JPA Buddy] create field to map the 'location' column
-//    Available actions: Define target Java type | Uncomment as is | Remove column mapping
-//    @Column(name = "location", columnDefinition = "GEOMETRY(65535) not null")
-//    private String location;
 
     @Column(name = "location", columnDefinition = "GEOMETRY(65535) not null")
-    public String getLocation()
+    public Point getLocation()
     {
         return this.location;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(Point location) {
         this.location = location;
     }
 
@@ -186,5 +181,19 @@ public class Address implements java.io.Serializable {
 
     public void setStores(Set<Store> stores) {
         this.stores = stores;
+    }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "addressId=" + addressId +
+                ", city=" + city +
+                ", address='" + address + '\'' +
+                ", address2='" + address2 + '\'' +
+                ", district='" + district + '\'' +
+                ", postalCode='" + postalCode + '\'' +
+                ", phone='" + phone + '\'' +
+                ", location=" + location +
+                '}';
     }
 }

@@ -13,10 +13,8 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-public final class AddressDto implements Serializable {
-    @NotNull(message = "please enter address id")
-    @Positive(message = "Please Enter positive address id")
+public class AddressDto implements Serializable {
+
     private Short addressId;
     @NotNull(message = "please enter country")
     @Size(min = 3, max = 20, message = "please enter country size between 3 to 20 characters")

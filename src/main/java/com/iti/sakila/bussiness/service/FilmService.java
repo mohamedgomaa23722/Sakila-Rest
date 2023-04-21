@@ -46,6 +46,7 @@ public class FilmService extends BaseService<Film, FilmDto> {
             if (!InputDataValidator.isValidData(filmDto))
                 throw new InputDataException(InputDataValidator.validateMessage().toString());
 
+
             Film film = FilmMapper.INSTANCE.toEntity(filmDto);
 
             film.setLastUpdate(new Timestamp(new Date().getTime()));
@@ -78,10 +79,10 @@ public class FilmService extends BaseService<Film, FilmDto> {
                     throw new NotExistException("Make sure that category id = " + categoryDto.getCategoryId() + " is exist.");
             }
 
-            return new MessageBuilder()
-                    .setSuccessfullyMessage("successfully insert film")
-                    .setFailMessageDesc("fail to insert film  with id =" + insertedFilm.getFilmId() + "to Database ")
-                    .setSuccessfully(true).build();
+            return new MessageBuilder(200)
+                    .setMessage("successfully insert film")
+                    .setDescription("fail to insert film  with id =" + insertedFilm.getFilmId() + "to Database ")
+                    .build();
         });
     }
 

@@ -1,12 +1,19 @@
 package com.iti.sakila.bussiness.mapper;
 
 import com.iti.sakila.api.dtos.customerdtos.CustomerResponse;
+import com.iti.sakila.api.dtos.customerdtos.StaffResponse;
+import com.iti.sakila.bussiness.dtos.customerdtos.PaymentDto;
+import com.iti.sakila.bussiness.dtos.persondtos.CustomerDto;
 import com.iti.sakila.bussiness.dtos.persondtos.StaffDto;
+import com.iti.sakila.bussiness.dtos.rentdtos.RentDto;
 import com.iti.sakila.persistance.entity.Staff;
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 @Mapper(componentModel = "default", uses = {AddressMapper.class, RentalMapper.class})
 public interface StaffMapper extends BaseMapper<Staff, StaffDto> {
@@ -49,7 +56,25 @@ public interface StaffMapper extends BaseMapper<Staff, StaffDto> {
         staff.getRentals().forEach(rental -> rental.setStaff(staff));
     }
 
-    List<CustomerResponse> toResponseList(List<StaffDto> staffs);
+    List<StaffResponse> toResponseList(List<StaffDto> staffs);
 
-    CustomerResponse toResponse(StaffDto customerDto);
+    @Mapping(target = "paymentsAmount", source = "payments", qualifiedByName = "paymentAmount")
+    @Mapping(target = "rentAmount", source = "rentals", qualifiedByName = "rentalAmount")
+    StaffResponse toResponse(StaffDto customers);
+    @Named("rentalAmount")
+    default int convertToRentalAmount(Set<RentDto> rentals) {
+        return rentals.size();
+    }
+
+    @Named("paymentAmount")
+    default String convertToString(Set<PaymentDto> payments) {
+        Optional<BigDecimal> amount = payments.stream()
+                .map(PaymentDto::getAmount)
+                .reduce(BigDecimal::add);
+        if (amount.isPresent())
+            return amount.get().toString();
+        else
+            return "0";
+
+    }
 }

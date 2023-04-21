@@ -19,7 +19,7 @@ import javax.annotation.processing.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-04-20T04:23:14+0200",
+    date = "2023-04-21T03:51:07+0200",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
 )
 public class CustomerMapperImpl implements CustomerMapper {
@@ -105,7 +105,6 @@ public class CustomerMapperImpl implements CustomerMapper {
 
         customerResponse.setPaymentsAmount( convertToString( customers.getPayments() ) );
         customerResponse.setRentAmount( convertToRentalAmount( customers.getRentals() ) );
-        customerResponse.setCustomerId( customers.getCustomerId() );
         customerResponse.setFirstName( customers.getFirstName() );
         customerResponse.setLastName( customers.getLastName() );
         customerResponse.setStoreId( customers.getStoreId() );
@@ -118,6 +117,7 @@ public class CustomerMapperImpl implements CustomerMapper {
         customerResponse.setPostalCode( customers.getPostalCode() );
         customerResponse.setCreateDate( customers.getCreateDate() );
         customerResponse.setActive( customers.isActive() );
+        customerResponse.setCustomerId( customers.getCustomerId() );
 
         return customerResponse;
     }

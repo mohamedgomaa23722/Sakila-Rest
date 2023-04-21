@@ -1,6 +1,6 @@
 package com.iti.sakila.bussiness.mapper;
 
-import com.iti.sakila.api.dtos.customerdtos.CustomerResponse;
+import com.iti.sakila.api.dtos.customerdtos.StaffResponse;
 import com.iti.sakila.bussiness.dtos.customerdtos.PaymentDto;
 import com.iti.sakila.bussiness.dtos.persondtos.StaffDto;
 import com.iti.sakila.bussiness.dtos.rentdtos.RentDto;
@@ -19,7 +19,7 @@ import javax.annotation.processing.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-04-20T04:23:17+0200",
+    date = "2023-04-21T03:51:05+0200",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
 )
 public class StaffMapperImpl implements StaffMapper {
@@ -157,12 +157,12 @@ public class StaffMapperImpl implements StaffMapper {
     }
 
     @Override
-    public List<CustomerResponse> toResponseList(List<StaffDto> staffs) {
+    public List<StaffResponse> toResponseList(List<StaffDto> staffs) {
         if ( staffs == null ) {
             return null;
         }
 
-        List<CustomerResponse> list = new ArrayList<CustomerResponse>( staffs.size() );
+        List<StaffResponse> list = new ArrayList<StaffResponse>( staffs.size() );
         for ( StaffDto staffDto : staffs ) {
             list.add( toResponse( staffDto ) );
         }
@@ -171,27 +171,31 @@ public class StaffMapperImpl implements StaffMapper {
     }
 
     @Override
-    public CustomerResponse toResponse(StaffDto customerDto) {
-        if ( customerDto == null ) {
+    public StaffResponse toResponse(StaffDto customers) {
+        if ( customers == null ) {
             return null;
         }
 
-        CustomerResponse customerResponse = new CustomerResponse();
+        StaffResponse staffResponse = new StaffResponse();
 
-        customerResponse.setFirstName( customerDto.getFirstName() );
-        customerResponse.setLastName( customerDto.getLastName() );
-        customerResponse.setStoreId( customerDto.getStoreId() );
-        customerResponse.setEmail( customerDto.getEmail() );
-        customerResponse.setPhone( customerDto.getPhone() );
-        customerResponse.setCountry( customerDto.getCountry() );
-        customerResponse.setCity( customerDto.getCity() );
-        customerResponse.setAddress( customerDto.getAddress() );
-        customerResponse.setDistrict( customerDto.getDistrict() );
-        customerResponse.setPostalCode( customerDto.getPostalCode() );
-        customerResponse.setCreateDate( customerDto.getCreateDate() );
-        customerResponse.setActive( customerDto.isActive() );
+        staffResponse.setPaymentsAmount( convertToString( customers.getPayments() ) );
+        staffResponse.setRentAmount( convertToRentalAmount( customers.getRentals() ) );
+        staffResponse.setFirstName( customers.getFirstName() );
+        staffResponse.setLastName( customers.getLastName() );
+        staffResponse.setStoreId( customers.getStoreId() );
+        staffResponse.setEmail( customers.getEmail() );
+        staffResponse.setPhone( customers.getPhone() );
+        staffResponse.setCountry( customers.getCountry() );
+        staffResponse.setCity( customers.getCity() );
+        staffResponse.setAddress( customers.getAddress() );
+        staffResponse.setDistrict( customers.getDistrict() );
+        staffResponse.setPostalCode( customers.getPostalCode() );
+        staffResponse.setCreateDate( customers.getCreateDate() );
+        staffResponse.setActive( customers.isActive() );
+        staffResponse.setStaffId( customers.getStaffId() );
+        staffResponse.setUsername( customers.getUsername() );
 
-        return customerResponse;
+        return staffResponse;
     }
 
     protected Store staffDtoToStore(StaffDto staffDto) {

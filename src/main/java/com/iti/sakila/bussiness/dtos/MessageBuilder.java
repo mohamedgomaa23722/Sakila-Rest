@@ -1,36 +1,27 @@
 package com.iti.sakila.bussiness.dtos;
 
 public class MessageBuilder {
-    private String failMessage;
-    private String successfullyMessage;
-    private String failMessageDesc;
-    private String successfullyMessageDesc;
-    private boolean isSuccessfully;
-
+    private int code;
+    private String message;
+    private String description;
     private Object object;
 
-    public MessageBuilder setFailMessage(String failMessage) {
-        this.failMessage = failMessage;
+    public MessageBuilder(int code) {
+        this.code = code;
+    }
+
+    public MessageBuilder setCode(int code) {
+        this.code = code;
         return this;
     }
 
-    public MessageBuilder setSuccessfullyMessage(String successfullyMessage) {
-        this.successfullyMessage = successfullyMessage;
+    public MessageBuilder setMessage(String message) {
+        this.message = message;
         return this;
     }
 
-    public MessageBuilder setFailMessageDesc(String failMessageDesc) {
-        this.failMessageDesc = failMessageDesc;
-        return this;
-    }
-
-    public MessageBuilder setSuccessfullyMessageDesc(String successfullyMessageDesc) {
-        this.successfullyMessageDesc = successfullyMessageDesc;
-        return this;
-    }
-
-    public MessageBuilder setSuccessfully(boolean successfully) {
-        isSuccessfully = successfully;
+    public MessageBuilder setDescription(String description) {
+        this.description = description;
         return this;
     }
 
@@ -40,8 +31,6 @@ public class MessageBuilder {
     }
 
     public Message build() {
-        if (isSuccessfully)
-            return new Message(200, successfullyMessage, successfullyMessageDesc, object);
-        return new Message(500, failMessage, failMessageDesc,object);
+            return new Message(code, message, description, object);
     }
 }

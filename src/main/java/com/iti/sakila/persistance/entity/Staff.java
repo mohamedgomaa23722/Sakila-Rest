@@ -2,23 +2,14 @@ package com.iti.sakila.persistance.entity;
 // Generated Apr 1, 2023, 5:10:50 AM by Hibernate Tools 6.1.7.Final
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.*;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 import org.hibernate.annotations.BatchSize;
 
 import java.sql.Timestamp;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -99,7 +90,7 @@ public class Staff implements java.io.Serializable {
         this.store = store;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id", nullable = false)
     public Address getAddress() {
         return this.address;
@@ -217,5 +208,21 @@ public class Staff implements java.io.Serializable {
 
     public void setRentals(Set<Rental> rentals) {
         this.rentals = rentals;
+    }
+
+    @Override
+    public String toString() {
+        return "Staff{" +
+                "staffId=" + staffId +
+                ", store=" + store +
+                ", address=" + address +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", picture=" + Arrays.toString(picture) +
+                ", email='" + email + '\'' +
+                ", active=" + active +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

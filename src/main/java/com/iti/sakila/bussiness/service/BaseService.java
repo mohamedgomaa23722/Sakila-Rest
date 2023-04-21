@@ -32,7 +32,8 @@ public class BaseService<T, R> implements ServiceInterface<T, R> {
     public Message insert(R object) {
         return Database.doInTransaction(entityManager -> {
             if (!InputDataValidator.isValidData(object))
-                throw new InputDataException(InputDataValidator.validateMessage().toString());
+                    throw new InputDataException(InputDataValidator.validateMessage().toString());
+
             T entity = baseMapper.toEntity(object);
             T insertedEntity = repository.insert(entity, entityManager);
             return generateMessage(baseMapper.toDto(insertedEntity));
@@ -80,9 +81,8 @@ public class BaseService<T, R> implements ServiceInterface<T, R> {
     }
 
     public Message generateMessage(Object object) {
-        return new MessageBuilder()
-                .setSuccessfullyMessage("Successfull operation")
-                .setSuccessfully(true)
+        return new MessageBuilder(200)
+                .setMessage("Successfull operation")
                 .setObject(object)
                 .build();
     }

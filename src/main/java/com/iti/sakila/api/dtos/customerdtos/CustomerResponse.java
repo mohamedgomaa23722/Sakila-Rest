@@ -1,7 +1,9 @@
 package com.iti.sakila.api.dtos.customerdtos;
 
 import com.iti.sakila.bussiness.dtos.customerdtos.PaymentDto;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.math.BigDecimal;
@@ -10,23 +12,8 @@ import java.util.Set;
 
 @Data
 @ToString
-public class CustomerResponse {
+@NoArgsConstructor
+@AllArgsConstructor
+public class CustomerResponse extends HumanResponse{
     private Short customerId;
-    private String firstName;
-    private String lastName;
-    private Byte storeId;
-    private String email;
-    private String phone;
-    private String country;
-    private String city;
-    private String address;
-    private String district;
-    private String postalCode;
-    private Timestamp createDate;
-    private boolean active;
-    private String paymentsAmount;
-    private int rentAmount;
-    public void setRentAmount(int rentAmount) {
-        this.rentAmount = rentAmount;
-    }
 }

@@ -55,7 +55,7 @@ public class City implements java.io.Serializable {
         this.cityId = cityId;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "country_id", nullable = false)
     public Country getCountry() {
         return this.country;
@@ -94,7 +94,14 @@ public class City implements java.io.Serializable {
         this.addresses = addresses;
     }
 
-
+    @Override
+    public String toString() {
+        return "City{" +
+                "cityId=" + cityId +
+                ", country=" + country +
+                ", city='" + city + '\'' +
+                '}';
+    }
 }
 
 

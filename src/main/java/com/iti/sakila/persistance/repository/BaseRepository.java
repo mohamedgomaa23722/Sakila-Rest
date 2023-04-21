@@ -1,7 +1,7 @@
 package com.iti.sakila.persistance.repository;
 
 import com.iti.sakila.bussiness.exceptions.NotExistException;
-import com.iti.sakila.persistance.Database;
+import com.iti.sakila.bussiness.exceptions.InsertionException;
 import com.iti.sakila.persistance.dao.BaseDao;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.criteria.CriteriaBuilder;
@@ -40,21 +40,29 @@ public class BaseRepository<T> implements BaseDao<T> {
     }
 
     public boolean delete(int id, EntityManager entityManager) {
+
         T entity = findById(id, entityManager);
-        System.out.println(entity);
-            if (entityManager.contains(entity)) {
+        System.out.println("---------------- ****** ENtity ******* ------------");
+        System.out.println("entity id : " +id);
+        System.out.println("Entity : "+entity);
+        System.out.println("---------------------------------------------------");
+            if (entity != null) {
                 entityManager.remove(entity);
-                System.out.println("contains actor");
+                System.out.println("contains entity");
             } else {
-                System.out.println("not contain actor");
-                entityManager.remove(entityManager.merge(entity));
+                return false;
             }
             return true;
     }
 
     public T findById(int id, EntityManager entityManager) {
             try {
-                return entityManager.find(src, id);
+                T entity = entityManager.find(src, id);
+                System.out.println("---------------- ****** Find entity ******* ------------");
+                System.out.println("entity id : " +id);
+                System.out.println("Founded Entity : "+entity);
+                System.out.println("---------------------------------------------------");
+                return entity;
             } catch (Exception ex) {
                 throw new NotExistException(src.getSimpleName() + " id is not exist into our database");
             }
@@ -65,8 +73,7 @@ public class BaseRepository<T> implements BaseDao<T> {
         try {
             return  entityManager.merge(entity);
         } catch (Exception e) {
-            e.printStackTrace();
-            return null;
+            throw new InsertionException("fail to Insert object with values ('" + entity + "') due to : " + e.getMessage());
         }
     }
 

@@ -81,7 +81,7 @@ public class Customer implements java.io.Serializable {
         this.store = store;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id", nullable = false)
     public Address getAddress() {
         return this.address;
@@ -150,7 +150,7 @@ public class Customer implements java.io.Serializable {
         this.lastUpdate = lastUpdate;
     }
     @BatchSize(size = 20)
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer", orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer", cascade = CascadeType.REMOVE)
     public Set<Payment> getPayments() {
         return this.payments;
     }
@@ -160,7 +160,7 @@ public class Customer implements java.io.Serializable {
     }
 
     @BatchSize(size = 20)
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer", orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer", cascade = CascadeType.REMOVE)
     public Set<Rental> getRentals() {
         return this.rentals;
     }
@@ -170,6 +170,18 @@ public class Customer implements java.io.Serializable {
     }
 
 
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "customerId=" + customerId +
+                ", store=" + store +
+                ", address=" + address +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", active=" + active +
+                '}';
+    }
 }
 
 

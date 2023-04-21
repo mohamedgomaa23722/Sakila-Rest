@@ -1,5 +1,6 @@
 package com.iti.sakila.bussiness.dtos.addressdtos;
 
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
@@ -21,6 +22,12 @@ import java.io.Serializable;
 @XmlRootElement
 public class CityDto implements Serializable {
     private Short cityId;
-    private String country;
-    private String city;
+    @Positive(message = "country id must be positive")
+    @Min(value = 1, message = "please Enter country id")
+    private int countryId;
+
+    private  String country;
+    @NotNull(message = "Please enter city name")
+    @Size(min = 4, max = 25, message = "city name must contain 4 to 25 letters")
+    private  String city;
 }

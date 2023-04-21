@@ -84,10 +84,9 @@ public class RentService extends BaseTransactionService<Rental, RentDto> {
                 Payment payment = new Payment(staff, customer, rental, film.getReplacementCost(), new Date(), new Date());
                 paymentRepository.insert(payment, entityManager);
 
-                return new MessageBuilder()
-                        .setSuccessfullyMessage("Successfully inserted")
-                        .setSuccessfullyMessageDesc("inserted rental operation with id = " + rental.getRentalId() + " for film = " + film.getFilmId())
-                        .setSuccessfully(true)
+                return new MessageBuilder(200)
+                        .setMessage("Successfully inserted")
+                        .setDescription("inserted rental operation with id = " + rental.getRentalId() + " for film = " + film.getFilmId())
                         .build();
             } else {
                 throw new RuntimeException("There are no more item on the stock for that film");

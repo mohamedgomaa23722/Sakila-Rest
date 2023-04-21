@@ -11,7 +11,7 @@ import javax.annotation.processing.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-04-20T04:23:16+0200",
+    date = "2023-04-21T03:51:04+0200",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 20 (Oracle Corporation)"
 )
 public class CityMapperImpl implements CityMapper {
@@ -59,6 +59,10 @@ public class CityMapperImpl implements CityMapper {
         CityDto cityDto = new CityDto();
 
         cityDto.setCountry( cityCountryCountry( City ) );
+        Short countryId = cityCountryCountryId( City );
+        if ( countryId != null ) {
+            cityDto.setCountryId( countryId );
+        }
         cityDto.setCityId( City.getCityId() );
         cityDto.setCity( City.getCity() );
 
@@ -88,7 +92,7 @@ public class CityMapperImpl implements CityMapper {
 
         CityDto cityDto = new CityDto();
 
-        cityDto.setCountry( insertCityRequest.getCountry() );
+        cityDto.setCountryId( insertCityRequest.getCountryId() );
         cityDto.setCity( insertCityRequest.getCity() );
 
         return cityDto;
@@ -117,6 +121,7 @@ public class CityMapperImpl implements CityMapper {
         if ( cityDto.getCountry() != null ) {
             mappingTarget.setCountry( cityDto.getCountry() );
         }
+        mappingTarget.setCountryId( (short) cityDto.getCountryId() );
     }
 
     private String cityCountryCountry(City city) {
@@ -134,6 +139,21 @@ public class CityMapperImpl implements CityMapper {
         return country1;
     }
 
+    private Short cityCountryCountryId(City city) {
+        if ( city == null ) {
+            return null;
+        }
+        Country country = city.getCountry();
+        if ( country == null ) {
+            return null;
+        }
+        Short countryId = country.getCountryId();
+        if ( countryId == null ) {
+            return null;
+        }
+        return countryId;
+    }
+
     protected Country cityDtoToCountry1(CityDto cityDto) {
         if ( cityDto == null ) {
             return null;
@@ -142,6 +162,7 @@ public class CityMapperImpl implements CityMapper {
         Country country = new Country();
 
         country.setCountry( cityDto.getCountry() );
+        country.setCountryId( (short) cityDto.getCountryId() );
 
         return country;
     }
