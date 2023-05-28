@@ -86,9 +86,9 @@ This is an example using our repository so follow those steps:
   - Staffs
  
 # Technology Used
-![java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/cz.jirutka.rsql/rsql-parser/badge.svg)](https://maven-badges.herokuapp.com/maven-central/cz.jirutka.rsql/rsql-parser)
-![MySql](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
+- Maven
+- Java
+- MySQL
 - Jakarta
 - Hibernate
 - JAXB 
